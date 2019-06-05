@@ -1,0 +1,123 @@
+u_id,mode,survey,age,color,country,current_degree,data_ana,data_ana_text,dpt,english,highest_degree,sex,us_age,mode_description
+79,4,pre,29,No,South Korea,Masters,3,I have conducted data analysis for my thesis during my master's program. ,"Teaching, Learning and Culture",No,Bachelors,Female,2,Clickable & meter with high limit
+16,4,pre,20,No,United States,Junior,2,I have coded using R in statistics and analyzed data in my first stats class. I have also analyzed data in my chemistry labs. ,Mathematics,Yes,High School,Female,20,Clickable & meter with high limit
+55,4,pre,20,No,United States,Sophomore,2,I am currently taking a Statistics 303 course. ,Wildlife and Fisheries ,Yes,High School,Male,20,Clickable & meter with high limit
+125,4,pre,22,No,United States of America,Junior,4,I analyze and reduce my own experimental data in a lab setting using a variety of methods and software.,Biochemistry and Biophysics,Yes,Bachelors,Male,22,Clickable & meter with high limit
+207,4,pre,22,No,United States,Senior,2,"Over the course of the last year, I worked as a research assistant in a lab. I have some experience in collecting data and analyzing it in a research setting. ",Psychology,Yes,High School,Female,22,Clickable & meter with high limit
+8,4,pre,21,No,US,Senior,3,I am a research assistant in a neuropsychology lab which uses a significant amount of data analysis,English,Yes,High School,Female,21,Clickable & meter with high limit
+85,4,pre,20,No,Peru,Sophomore,2,The experience comes from some ISEN classes I've taken.,Industrial & Systems Engineering (ISEN),No,High School,Male,4,Clickable & meter with high limit
+93,4,pre,25,No,USA,Senior,1,I don't have any experience.,Chemical Engineering,Yes,High School,Male,25,Clickable & meter with high limit
+131,4,pre,21,No,United States,Junior,1,Beyond a statistics class I have done very little numerical data analysis.,Nutrition and Food Science,Yes,High School,Female,21,Clickable & meter with high limit
+7,4,pre,22,No,United States,Senior,3,"Worked in data entry, haven't done much data analysis outside of school.",Electrical Engineering,Yes,High School,Male,22,Clickable & meter with high limit
+82,3,pre,26,No,India,Masters,3,,INFO,Yes,Bachelors,Female,,Clickable & meter with no limit
+9,3,pre,20,No,USA,Senior,3,"working with spreadsheets, have taken a statistics class before",Biomedical Sciences,Yes,High School,Female,20,Clickable & meter with no limit
+132,3,pre,19,No,USA,Freshman,1,I have no experience in this,International Studies,Yes,High School,Female,19,Clickable & meter with no limit
+179,3,pre,18,No,USA,Freshman,1,,International Studies,Yes,High School,Female,18,Clickable & meter with no limit
+110,3,pre,21,No,USA,Junior,1,,Engineering,No,High School,Female,7,Clickable & meter with no limit
+78,3,pre,20,No,United States,Junior,2,some data interpretation in political science classes ,Political Science ,Yes,High School,Female,,Clickable & meter with no limit
+61,3,pre,19,No,United States,Sophomore,1,I'm an English major because I don't enjoy working with numbers.,English,Yes,High School,Female,19,Clickable & meter with no limit
+111,3,pre,24,No,India,Masters,3,I have taken some Data Analysis classes and done a couple of projects in the domain.,Computer Science and Engineering,No,Bachelors,Male,0,Clickable & meter with no limit
+127,3,pre,20,No,United States,Sophomore,1,,Business,Yes,Bachelors,Male,20,Clickable & meter with no limit
+271,5,pre,21,No,United States,Senior,3,"Over the summer, I participated in a paid internship where one of my duties was to input patient data into a hospital-wide database that could be used by physicians.",Biomedical Sciences,Yes,High School,Female,21,Clickable & meter wih limit
+296,2,pre,21,No,United States,Junior,2,Currently taking POLS-309 which is a statistics based class. I have also taken POLS-209 which is an introductory course.,Political Science,Yes,High School,Male,21,Clickable w/out meter
+295,2,pre,20,No,Nigeria,Junior,1,,Engineering,Yes,High School,Female,2,Clickable w/out meter
+306,5,pre,27,No,India,Masters,4,"I have industrial experience in Business Intelligence and building Data warehouses. Thus, dealt with data a lot.",Information and Operations,No,Bachelors,Female,1,Clickable & meter wih limit
+185,2,pre,22,No,United States,Senior,3,"Since I am a biochemistry major, I am required to work in a lab for a period of time in order to graduate. The lab I worked in for two years had me doing a lot of data analysis of charts and raw numbers. ",Biochemistry & Biophysics,Yes,High School,Female,22,Clickable w/out meter
+350,5,pre,23,No,US,Senior,3,I previously worked in a position where we collected statistical data on programs we put on.,Science,Yes,High School,Female,23,Clickable & meter wih limit
+291,2,pre,19,No,US Virgin Islands,Sophomore,2,I have only had some data analysis experience when studying in different mathematics courses.,Chemical Engineering,Yes,High School,Female,19,Clickable w/out meter
+197,2,pre,19,No,USA,Sophomore,1,I have no experience.,Computer Science and Engineering,No,High School,Female,19,Clickable w/out meter
+310,5,pre,21,No,United States,Junior,1,Small amount done in early engineering courses,Ocean Engineering ,No,High School,Male,18,Clickable & meter wih limit
+165,5,pre,27,No,Bangladesh,PhD,2,I work on signal processing and hence I know little about data processing and numerical methods.,Biomedical Engineering,No,Bachelors,Male,0,Clickable & meter wih limit
+315,2,pre,21,No,United States,Senior,1,,Health and Kinesiology,Yes,High School,Female,21,Clickable w/out meter
+254,1,pre,27,No,India,Masters,2,,INFO,No,Bachelors,Female,,Full disclosure
+262,1,pre,22,No,Pakistan,Senior,3,"For the AUV project, analyzing SONAR data",Computer Science,No,High School,Male,8,Full disclosure
+282,1,pre,25,No,India,Masters,2,I have ran analytics on QoS data,ECE,No,Bachelors,Male,0,Full disclosure
+243,1,pre,28,No,India,Masters,3,,ECE,No,Bachelors,Male,1,Full disclosure
+318,1,pre,25,No,USA,Other,2,I work on a research project and manage/analyze our data.,WFSC,Yes,Bachelors,Female,25,Full disclosure
+268,1,pre,27,No,India,Masters,3,"Learning SAS, STATA, and other softwares as part of the curriculum. ",Epidemiology,No,Bachelors,Female,1,Full disclosure
+99,1,pre,21,No,USA,Senior,3,Took a STATS class and SOCI 230 & 430 which uses data analysis,Sociology,Yes,High School,Female,21,Full disclosure
+28,1,pre,20,No,United States,Junior,3,I took a Psychology Statistics course where we had to learn how to use SPSS.,Psychology,Yes,High School,Female,20,Full disclosure
+100,4,pre,18,No,United States,Freshman,3,I took a statistics class in high school.,Health and Kinesiology,Yes,High School,Female,18,Clickable & meter with high limit
+153,4,pre,22,No,India,Masters,4,Have worked extensively on Data Sciences and its applications in a Power System in my last semester. Apart from this i have pretty good experience with working on Data during my undergrad studies,Electrical Engineering,Yes,Bachelors,Male,0,Clickable & meter with high limit
+225,4,pre,21,No,United States of America,Junior,3,I have used some data analysis in some of my classes and have also used some in an internship I have had,Aerospace Engineering,Yes,High School,Male,21,Clickable & meter with high limit
+149,4,pre,29,No,India,Masters,2,Worked on a project during academics.,INFO,No,Masters,Male,1,Clickable & meter with high limit
+112,4,pre,27,No,Egypt,PhD,2,I started working on a data analytics project for my research and it involves using data mining algorithms and regression-based methods.,PETE,No,Masters,Female,3,Clickable & meter with high limit
+190,4,pre,33,No,,PhD,2,Data collection and Basic statistical analysis using SPSS ,architecture,No,Bachelors,Female,11,Clickable & meter with high limit
+41,3,pre,18,No,US,Freshman,3,"In ENGR 112, the first test was primarily descriptive statistics. It was all we talked about for the first 2 months of class.",Engineering,Yes,High School,Male,18,Clickable & meter with no limit
+62,3,pre,22,No,USA,Senior,1,,CSCE,Yes,High School,Female,17,Clickable & meter with no limit
+202,3,pre,25,No,India,Masters,3,I have worked as a Database Administrator for over 3 years at Wipro Technologies. And our coursework has few data related subjects. Will be working as a data analyst post graduation.,Management Information Systems,NA,Bachelors,Male,1,Clickable & meter with no limit
+160,3,pre,29,No,China,PhD,3,,Biochemistry,No,Bachelors,Female,6,Clickable & meter with no limit
+214,3,pre,22,No,United States,Masters,2,"Some in classes, but nothing outside of schoolwork.",Geology,Yes,Bachelors,Female,22,Clickable & meter with no limit
+167,3,pre,26,No,India,PhD,4,Research work includes data in text and excel mainly and analyzing using statistical and other equations.,Biological and Agricultural Engineering,No,Masters,Female,2,Clickable & meter with no limit
+210,3,pre,20,No,USA,Junior,4,I've dealt with many data analysis in physics and some past math courses.,Animal Science,Yes,High School,Female,20,Clickable & meter with no limit
+48,3,pre,42,No,USA,Masters,3,Descriptive stats in my stat classes.,Educational Administration,No,Masters,Female,42,Clickable & meter with no limit
+102,3,pre,23,No,United States,PhD,2,"I have taken grad level statistics, and worked with it in one project. I don't fell like I'm good at it. ",Mechanical Engineering,Yes,Bachelors,Male,23,Clickable & meter with no limit
+52,3,pre,22,No,United States,Senior,2,,Communication,Yes,High School,Female,22,Clickable & meter with no limit
+157,5,pre,26,No,India,PhD,2,,Computer Engineering,No,Masters,Male,,Clickable & meter wih limit
+341,2,pre,26,No,India,Masters,3,"I have done data collection, analysis and data warehousing as part of my academic projects and also in the company for which I was working back in India.",Management Information Systems,No,Bachelors,Female,0,Clickable w/out meter
+121,2,pre,30,No,Nicaragua,Masters,2,"I used to work in a call center and had to manage information about calls, rating average handle time and costumer satisfaction through numbers.",Performance Studies,No,Bachelors,Male,0,Clickable w/out meter
+354,2,pre,23,No,India,Masters,3,"Research thesis, working with data for machine learning based architectures for sensor fusion. experience in using data to find a relationship between inputs and outputs",ECEN,No,Bachelors,Female,2,Clickable w/out meter
+211,2,pre,31,Yes,India,Masters,3,Worked as an Information management Consultant for Accenture and Deloitte before joining the grad program at A&M,Information Sciences,No,,Male,1,Clickable w/out meter
+73,2,pre,25,No,India,Masters,3,Doing data analysis related academic projects and working in a professional capacity in this field during my internship and job.,Management Information Systems,No,Bachelors,Female,1,Clickable w/out meter
+352,2,pre,25,NA,India,Masters,2,Held a research assistant position for the last 3 semesters,Construction Science,No,Bachelors,Female,1,Clickable w/out meter
+266,2,pre,33,No,"Taiwan, R.O.C.",PhD,3,Analyzed enrollment data for TAMUQ Vice President Office,"D. of Teaching, Learning and Culture",No,Masters,Male,7,Clickable w/out meter
+320,5,pre,38,No,China,PhD,2,I have learned a couple of statistics courses and read some papers in which statistics is the data analysis method of the study.,TLAC,No,Masters,Female,3,Clickable & meter wih limit
+242,5,pre,33,No,Botswana,PhD,3,I have experience in data cleaning and basic data analysis from stats classes and from working with my own data,Public Health,Yes,Masters,Female,7,Clickable & meter wih limit
+292,5,pre,21,No,China,Junior,1,,Accounting,No,High School,Female,2,Clickable & meter wih limit
+298,2,pre,26,No,India,Masters,2,,INFO,No,Bachelors,Male,2,Clickable w/out meter
+2001,2,pre,18,No,US,Freshman,2,Have done some simple statistics in some classes and in high school.,WFSC,Yes,High School,Male,18,Clickable w/out meter
+304,5,pre,40,No,U.S.A,PhD,4,I work as a Graduate Research Assistant.,TLAC,Yes,Masters,Male,26,Clickable & meter wih limit
+284,5,pre,25,No,India,Masters,2,I have had some experience collecting and analyzing data for my undergraduate and graduate research projects.,Zachry Civil Engineering,No,Bachelors,Male,1,Clickable & meter wih limit
+351,2,pre,23,No,United States,Masters,4,My bachelor's degree is in Biology and we used SPSS software extensively for data calculations and descriptive stats for both my classes and within my research lab. ,"Recreation, Park and Tourism Sciences",Yes,Bachelors,Female,23,Clickable w/out meter
+192,5,pre,18,No,United States,Freshman,1,,Engineering,Yes,High School,Male,18,Clickable & meter wih limit
+223,2,pre,22,No,India,Masters,3,Done it to for many experiments related to electrical engineering,Electrical,No,Bachelors,Male,1,Clickable w/out meter
+87,2,pre,20,No,U.S.,Senior,3,"I did took six semesters of science labs. Also, I have been a research assistant for two years now.",Health and Kinesiology,Yes,High School,Female,20,Clickable w/out meter
+252,2,pre,24,No,India,Masters,3,,Landscape and Urban Planning,No,Bachelors,Male,0,Clickable w/out meter
+356,5,pre,26,No,Pakistan,PhD,2,I have experience with data analysis in MATLAB.,ISEN,No,Bachelors,Female,3,Clickable & meter wih limit
+147,5,pre,26,No,India,Masters,2,I have a little experience doing data analysis as part of school projects,Information and Operations Management,No,Bachelors,Male,0,Clickable & meter wih limit
+329,2,pre,22,No,India,Masters,3,Internship in India in Wipro in the Business Intelligence team. Statistical analysis experience during STAT courses at TAMU.,Computer Engineering,No,Bachelors,Female,1,Clickable w/out meter
+77,5,pre,27,No,India,Masters,4,Coursework involves data analysis,INFO,No,Bachelors,Male,0,Clickable & meter wih limit
+141,5,pre,26,No,Panama,Masters,1,,civil engineering,No,Bachelors,Male,8,Clickable & meter wih limit
+312,1,pre,23,No,India,Masters,1,"I have taken statistic classes, But I haven't done any data analysis.",Chemical Engineering,No,Bachelors,Male,1,Full disclosure
+81,1,pre,22,No,India,Masters,4,"I have worked as analyst before, and I have focused on descriptive statistics most of the time.",ISEN,No,Masters,Male,0,Full disclosure
+265,1,pre,26,No,India,PhD,3,performed various descriptive statistics along with analysis of variance (ANOVA) including multi-factor repeated measures ANOVA.,Neuroscience,No,Masters,Male,4,Full disclosure
+273,1,pre,25,No,china,PhD,2,research work,engineering,No,Bachelors,Female,1,Full disclosure
+285,1,pre,20,No,Viet Nam,Sophomore,2,,Biomedical Sciences,No,High School,Female,3,Full disclosure
+276,1,pre,,No,Taiwan,PhD,3,course work on data analysis,CE,No,Masters,Male,0,Full disclosure
+122,1,pre,29,No,India,Masters,3,,Computer Science ,Yes,Masters,Female,3,Full disclosure
+108,1,pre,32,No,INDIA,PhD,3,Internship & MS Thesis.,PETE,No,Masters,Male,5,Full disclosure
+91,1,pre,26,No,India,PhD,3,Basic Excel experience. Some econometric software experience.,,No,PhD,Male,4,Full disclosure
+249,1,pre,21,No,United States,Junior,2,,Biochemistry & Biophysics ,Yes,High School,Female,21,Full disclosure
+323,1,pre,27,No,United States of America,PhD,3,Working with biodiversity data and ecological modeling using R.,Wildlife and Fisheries Sciences,Yes,Bachelors,Male,27,Full disclosure
+90,1,pre,24,No,Colombia,PhD,4,"Experimental data analysis. Statistical analysis. Repressions, optimization.",Chemical Engineeing,No,Bachelors,Male,3,Full disclosure
+209,4,pre,26,No,U.S.A.,Masters,3,A couple courses and use in my research,Mechanical Engineering,Yes,Bachelors,Male,26,Clickable & meter with high limit
+213,4,pre,24,No,India,Masters,3,Worked for a couple of startup companies to analyze companies performance data for future steps,Electrical Engineering,No,Bachelors,Male,1,Clickable & meter with high limit
+239,4,pre,27,No,India,PhD,3,"Have done some t-tests, chi-square tests and other fundamental statistical significance tests.",CVEN,No,Masters,Male,3,Clickable & meter with high limit
+49,4,pre,30,No,India,PhD,2,"My Masters degree was in Planning with specialization in Housing. In this course, we had to deal with basic statistical data such as creating charts for data representation.",Architecture,No,Masters,Male,1,Clickable & meter with high limit
+191,4,pre,26,No,India,Masters,3,,CVEN,No,Masters,Female,1,Clickable & meter with high limit
+34,4,pre,25,No,Indonesia,Masters,2,I used to analyse the data from laboratory tests which sometimes appear in form of graph. ,CVEN,No,Bachelors,Female,,Clickable & meter with high limit
+233,4,pre,25,No,Chins,Masters,3,"My major is Economics, so I often do some case studies that requires data analysis, statistics knowledge. So I have some experience with that, and familiar with related software like SAS and R",Economics,No,Bachelors,Female,1,Clickable & meter with high limit
+26,4,pre,24,No,India,Masters,2,Helped to collect data for a professor last semester and in my undergraduate classes.,Architecture,No,Bachelors,Female,4,Clickable & meter with high limit
+59,4,pre,22,No,India,Masters,3,"I am an industrial engineering graduate with coursework in applied statistics. As a part of my coursework, I have done some descriptive statistics",Industrial Engineering,No,Bachelors,Male,0,Clickable & meter with high limit
+162,4,pre,28,No,USA,PhD,4,"Research, statistics courses, STATA",CEHD,Yes,Masters,Female,28,Clickable & meter with high limit
+200,3,pre,22,No,India,Masters,1,,ECEN,Yes,Bachelors,Male,1,Clickable & meter with no limit
+6,3,pre,18,No,US,Freshman,2,Statistics courses and some interest in phylogenetics,Biology,Yes,High School,Male,18,Clickable & meter with no limit
+15,3,pre,24,Yes,India,Masters,2,"Took Stat 651 last semester, so have tad bit experience of data analysis using JMP.",Chemical Engineering,No,Bachelors,Male,1,Clickable & meter with no limit
+173,3,pre,18,No,United States,Freshman,2,,Veterinary Science and Biomedical Sciences,Yes,High School,Male,18,Clickable & meter with no limit
+151,3,pre,22,No,United States of America,Senior,3,I have to use excel and such for analysis. However I have not had to take a statistics class.,Engineering,Yes,High School,Male,22,Clickable & meter with no limit
+232,3,pre,23,No,Serbia,PhD,1,,Geology and Geophysics,No,Bachelors,Male,4,Clickable & meter with no limit
+119,3,pre,20,No,USA,Junior,1,I've never done data analysis.,Biology,Yes,High School,Female,20,Clickable & meter with no limit
+280,2,pre,18,No,US,Sophomore,2,"I have taken a statistics course, but that is about the extent of my dealings with data.",Biomedical Sciences and Enomology,Yes,High School,Female,18,Clickable w/out meter
+337,5,pre,18,No,United States,Freshman,2,I worked with some data during chemistry lab and my psychology class last semester.,Animal Science ,Yes,High School,Female,18,Clickable & meter wih limit
+283,5,pre,21,No,United States,Senior,1,This will be the first time.,Liberal Arts,No,High School,Female,21,Clickable & meter wih limit
+2002,5,pre,25,No,China,Masters,2,2,Environmental & Occupational Health,No,Bachelors,Female,4,Clickable & meter wih limit
+5,2,pre,22,No,U.S.,Senior,3,,OCEN,Yes,High School,Female,20,Clickable w/out meter
+258,5,pre,22,No,US,Senior,2,In one of my psychology classes I had to uses spss,liberal arts,No,High School,Male,17,Clickable & meter wih limit
+261,2,pre,20,No,US,Junior,2,I took an econometrics class once,Liberal Ars,Yes,High School,Female,20,Clickable w/out meter
+274,5,pre,21,No,China,,2,Took statistics before,Food Science and Technology,No,High School,Female,3,Clickable & meter wih limit
+317,5,pre,18,No,United States,Freshman,1,,Engineering,Yes,High School,Male,18,Clickable & meter wih limit
+30,5,pre,19,No,Vietnam,Freshman,3,,Veterinary Science and Biomedical Sciences ,No,Other,Female,7,Clickable & meter wih limit
+250,5,pre,19,No,United States,Sophomore,3,"I have taken several statistics and computer science courses, and have a good amount of experience working with data and computers.",Chemistry,Yes,High School,Male,19,Clickable & meter wih limit
+309,2,pre,18,No,United States,Freshman,2,I took a statistics class and analyze data in chemistry.,Biology,Yes,High School,Female,18,Clickable w/out meter
+51,1,pre,20,No,US,Junior,1,n/a,Education and Human Development,Yes,High School,Female,20,Full disclosure
+130,1,pre,20,No,United States,Junior,2,I am currently enrolled in an introductory to statistics course.,Psychological and Brain Sciences,No,High School,Female,14,Full disclosure

@@ -1,0 +1,454 @@
+---
+title: "Analysis"
+output: github_document
+params:
+  section_no: !r c(2)
+  percent_attention: !r 0.80
+  threshold: !r 0.05
+  threshold_2: !r (0.05)
+---
+
+```{r message=FALSE, warning=FALSE, results='hide', echo=FALSE}
+pacman::p_load(rebus, glue, fs, janitor, broom, TOSTER, tidyverse, pwr, ANOVAreplication)
+
+section_no <- params$section_no
+percent_attention <- params$percent_attention
+threshold <- params$threshold
+threshold_2 <- params$threshold_2
+# power <- params$power
+message(section_no)
+
+df_key_info <- read_csv("../data/processed/key_info.csv")
+df_post <- read_csv("../data/processed/post_survey.csv")
+
+(df_key_info_secs <- 
+  section_no %>% map(function(x){
+    cols <- str_c("section_", x)
+    
+    df <- 
+      df_key_info %>% 
+      dplyr::select(u_id, mode, matches(cols)) %>% 
+      mutate(section = x)
+    
+    colnames(df) <- colnames(df) %>% str_replace("section_" %R% one_or_more(DGT) %R% "_", "")
+    
+    df %>% 
+      filter(percent_attention > 0.8,
+             !is.na(duration))
+  }) %>% 
+    bind_rows() %>% 
+    add_count(u_id) %>% 
+    filter(n == length(section_no)) %>% 
+    dplyr::select(-n) %>% 
+    group_by(u_id) %>% 
+    summarise_all(mean))
+
+n_elim <- nrow(df_key_info) - nrow(df_key_info_secs)
+
+df_key_info_secs <- 
+  df_key_info_secs %>% 
+  mutate(kapr = ifelse(mode == 1, 100, kapr))
+
+```
+
+### Section(s) `r section_no`
+
+A total of `r n_elim` record(s) have been eliminated due to the constraints.
+
+```{r echo=FALSE}
+df_key_info_secs %>% 
+  count(mode) %>% 
+  left_join(
+    df_key_info_secs %>% 
+      dplyr::select(mode, kapr, percent30, duration) %>% 
+      group_by(mode) %>% 
+      summarise_all(mean, na.rm = T),
+    by = "mode"
+  ) %>% 
+  left_join(
+    df_post %>% 
+      filter(u_id %in% df_key_info_secs$u_id) %>% 
+      dplyr::select(mode, comfortable_info, comfortable_pii) %>% 
+      group_by(mode) %>% 
+      summarise(#sum_na_info = sum(is.na(comfortable_info)),
+                #sum_na_pii = sum(is.na(comfortable_pii)),
+                comfortable_info = mean(comfortable_info, na.rm = T),
+                comfortable_pii = mean(comfortable_pii, na.rm = T)),
+    by = "mode"
+  ) %>% 
+  left_join(
+    df_key_info_secs %>% 
+      dplyr::select(mode, kapr, percent30, duration) %>% 
+      group_by(mode) %>% 
+      summarise_all(sd, na.rm = T),
+    by = "mode",
+    suffix = c("", "_sd")
+  )
+
+df_key_info_secs <- 
+  df_key_info_secs %>% 
+    left_join(
+      df_post %>% 
+        select(u_id, comfortable_info),
+      by = "u_id"
+    )
+
+```
+
+# Overview
+```{r}
+summary_overview <-  function(x){
+  message(x)
+  x <- df_key_info_secs %>% pull(x)
+  # browser()
+  
+  range(x) %>% print()
+  mean(x, na.rm = T) %>% print()
+  sd(x, na.rm = T) %>% print()
+}
+
+walk(c("kapr", "duration", "percent30"), summary_overview)
+
+```
+
+
+```{r message=FALSE, warning=FALSE, results='hide', echo=FALSE}
+df_h1 <-
+  df_key_info_secs %>%
+  filter(mode %in% c(1, 2))
+
+df_h2 <-
+  df_key_info_secs %>%
+  filter(mode %in% c(2, 3))
+
+df_h3 <-
+  df_key_info_secs %>%
+  filter(mode %in% c(3, 4, 5))
+
+df_h3_1 <-
+  df_key_info_secs %>%
+  filter(mode %in% c(3, 4))
+
+df_h3_2 <-
+  df_key_info_secs %>%
+  filter(mode %in% c(4, 5))
+
+df_h4_1 <-
+  df_key_info_secs %>%
+  filter(mode %in% c(1, 4))
+
+df_h4_2 <-
+  df_key_info_secs %>%
+  filter(mode %in% c(1, 5))
+
+
+
+```
+
+```{r message=FALSE, warning=FALSE, results='hide', echo=FALSE}
+
+apply_transformations <- function(o1, o2, threshold = 0.05){
+  
+  o1_t <- o1
+  o2_t <- o2
+  if(shapiro_test(o1_t, threshold) & shapiro_test(o2_t, threshold)) {
+    message("normal without transforms")
+    return(list(o1 = o1_t, o2 = o2_t))
+  }
+  
+  # for positive skew (skewed right. tail on the right)
+  o1_t = log(o1+1) # the +1 is just because log(0) is not defined
+  o2_t = log(o2+1)
+  if(shapiro_test(o1_t, threshold) & shapiro_test(o2_t, threshold)) {
+    message("log transform")
+    return(list(o1 = o1_t, o2 = o2_t))
+  }
+  
+  reversed_o1 <- max(o1, o2)- o1
+  reversed_o2 <- max(o1, o2)- o2
+  
+  o1_t = reversed_o1^2
+  o2_t = reversed_o2^2
+  if(shapiro_test(o1_t, threshold) & shapiro_test(o2_t, threshold)) {
+    message("reversed sqaured")
+    return(list(o1 = o1_t, o2 = o2_t))
+  }
+  
+  o1_t = sqrt(o1)
+  o2_t = sqrt(o2)
+  if(shapiro_test(o1_t, threshold) & shapiro_test(o2_t, threshold)) {
+    message("square root")
+    return(list(o1 = o1_t, o2 = o2_t))
+  }
+  
+  o1_t = 1/(reversed_o1 +1)		# the +1 is to avoid division by 0
+  o2_t = 1/(reversed_o2 +1)	
+  if(shapiro_test(o1_t, threshold) & shapiro_test(o2_t, threshold)) {
+    message("1/(reversed_o1 +1)	")
+    return(list(o1 = o1_t, o2 = o2_t))
+  }
+  
+  o1_t = 1/((reversed_o1+1)^2)
+  o2_t = 1/((reversed_o2+1)^2)
+  if(shapiro_test(o1_t, threshold) & shapiro_test(o2_t, threshold)) {
+    message("1/((reversed_o1+1)^2)")
+    return(list(o1 = o1_t, o2 = o2_t))
+  }
+  
+  #for negative skews (skewed left. tail on the left). just use reversed o1
+  #Remember to interpret results as reversed for interpretation!
+  o1_t = o1^2
+  o2_t = o2^2
+  if(shapiro_test(o1_t, threshold) & shapiro_test(o2_t, threshold)) {
+    message("square")
+    return(list(o1 = o1_t, o2 = o2_t))
+  }
+  
+  o1_t = log(reversed_o1 + 1)		# the +1 is just because log(0) is not defined
+  o2_t = log(reversed_o2 + 1)
+  if(shapiro_test(o1_t, threshold) & shapiro_test(o2_t, threshold)) {
+    message(" log(reversed_o1 + 1)")
+    return(list(o1 = o1_t, o2 = o2_t))
+  }
+  
+  o1_t = sqrt(reversed_o1)
+  o2_t = sqrt(reversed_o2)
+  if(shapiro_test(o1_t, threshold) & shapiro_test(o2_t, threshold)) {
+    message("sqrt(reversed_o1)")
+    return(list(o1 = o1_t, o2 = o2_t))
+  }
+  
+  o1_t = 1/(o1+1)	# the +1 is to avoid division by 0
+  o2_t = 1/(o2+1)
+  if(shapiro_test(o1_t, threshold) & shapiro_test(o2_t, threshold)) {
+    message("1/(o1+1)")
+    return(list(o1 = o1_t, o2 = o2_t))
+  }
+  
+  o1_t = 1/((o1+1)^2)
+  o2_t = 1/((o2+1)^2)
+  if(shapiro_test(o1_t, threshold) & shapiro_test(o2_t, threshold)) {
+    message(" 1/((o1+1)^2)")
+    return(list(o1 = o1_t, o2 = o2_t))
+  }
+  
+  #kurtosis transformations
+  o1_t = 1/(o1^3)
+  o2_t = 1/(o2^3)
+  if(shapiro_test(o1_t, threshold) & shapiro_test(o2_t, threshold)) {
+    message("1/(o1^3)")
+    return(list(o1 = o1_t, o2 = o2_t))
+  }
+  
+  o1_t = 1/sin(o1)
+  o2_t = 1/sin(o2)
+  if(shapiro_test(o1_t, threshold) & shapiro_test(o2_t, threshold)) {
+    message("1/sin(o1)")
+    return(list(o1 = o1_t, o2 = o2_t))
+  }
+  
+  message("No transformations worked. Returning original vector.")
+  return(list(o1 = o1_t, o2 = o2_t))
+}
+
+histogram <- function(x, bins = 30){
+ p <-  ggplot(data = tibble(x = x), aes(x)) +
+    geom_histogram(bins = bins)
+ print(p)
+ # message("I honestly tried to print.")
+}
+
+
+extract_measures <- function(df, vars, measure){
+  
+  map(vars, function(x){
+    # if(measure == "conf.int"){
+    #   browser()
+    # }
+
+    
+    message(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    message(str_c(str_to_upper(x)))
+    message(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    
+    x_vals <- df %>% pull(x)
+    mode_vals <- df %>% pull(mode)
+    modes <- mode_vals %>% unique() %>% sort()
+    
+    x_1 <- x_vals[mode_vals == modes[1]]
+    x_2 <- x_vals[mode_vals == modes[2]]
+    
+
+    x_n <- apply_transformations(x_1, x_2, threshold = threshold)
+    
+    x_1 <- x_n$o1
+    x_2 <- x_n$o2
+
+    if(shapiro_test(x_1, threshold) & shapiro_test(x_2, threshold)){
+      
+      var_test <- var.test(x_1, x_2)
+      if(var_test$p.value > threshold){
+        message("regular two sample t test")
+        
+        p <- t.test(x_1, x_2, var.equal=TRUE, paired=FALSE, conf.level = (1-threshold_2)) %>%
+          print() %>%
+          pluck(measure)
+      } else {
+        
+        message("welch two sample t test")
+        p <- t.test(x_1, x_2, var.equal=FALSE, paired=FALSE, conf.level = (1-threshold_2)) %>%
+          print() %>%
+          pluck(measure)
+        
+      }
+      
+    } else{
+      # browser()
+      message("wilcox test")
+      
+      p <- wilcox.test(x_1, x_2, conf.level = (1-threshold_2), conf.int = T) %>%
+        print() %>%
+        pluck(measure)
+    }
+    
+    p %>%
+      str_c(measure,": ", .) %>% 
+      print()
+    
+    if(measure == "p.value"){
+      p <- p.adjust(p, "bonferroni", n = 4)
+        if(p < threshold_2){
+        print("Different")
+      } else {
+        print("No different")
+      }
+    }
+    
+    p
+  })
+}
+
+run_test_2 <- function(df, h = "h"){
+  vars <- c("percent30", "kapr", "duration", "comfortable_info", "mean_confidence", "mean_confidence_right", "mean_confidence_wrong")
+  
+  ps <- extract_measures(df, vars, "p.value") %>% unlist()
+  stat <- extract_measures(df, vars, "statistic") %>% unlist()
+  conf <- extract_measures(df, vars, "conf.int") 
+  # browser()
+  conf_1 <- conf %>% map_dbl(function(x){
+    if(!is.null(x)){
+      return(x[1])
+    }
+    NA
+  })
+  conf_2 <- conf %>% map_dbl(function(x){
+    if(!is.null(x)){
+      return(x[2])
+    }
+    NA
+  })
+  # conf_1 <- conf %>% unlist() %>% .[seq(1, length(.), 2)]
+  # conf_2 <- conf %>% unlist() %>% .[seq(2, 11, 2)]
+  
+  tibble(hypothesis = h, var = vars, p_value = ps, statistic = stat, 
+         conf_1 = conf_1, conf_2 = conf_2
+         ) %>% 
+    mutate(is_different = if_else(p_value < threshold, "different", "not_different"))
+}
+
+shapiro_test <- function(outcome, threshold = 0.05, verbose = FALSE){
+   
+  if(length(unique(outcome)) == 1) return(FALSE)
+  
+   sh <- shapiro.test(outcome)
+   
+   if(verbose){
+    if(sh$p.value > threshold){
+     message("Normality satisfied according to Shapiro-Wilk")
+     } else {
+       message("Normality NOT satisfied according to Shapiro-Wilk")
+     } 
+   }
+   
+   return(sh$p.value > threshold)
+}
+
+
+```
+
+
+## Hypothesis 1
+```{r echo=FALSE}
+df_res_1 <- run_test_2(df_h1, h = "1")
+```
+
+## Hypothesis 2
+```{r echo=FALSE}
+df_res_2 <- run_test_2(df_h2, h = "2")
+```
+
+## Hypothesis 3.1
+```{r echo=FALSE}
+df_res_3_1 <- run_test_2(df_h3_1, h = "3.1")
+```
+
+## Hypothesis 3.2
+```{r echo=FALSE}
+df_res_3_2 <- run_test_2(df_h3_2, h = "3.2")
+```
+
+## Hypothesis 4.1
+```{r echo=FALSE}
+df_res_4_1 <- run_test_2(df_h4_1, h = "4.1")
+```
+
+## Hypothesis 4.2
+```{r echo=FALSE}
+df_res_4_2 <- run_test_2(df_h4_2, h = "4.2")
+```
+
+
+## summary
+
+Sorted by hypothesis.
+```{r echo=FALSE}
+
+df_results <- bind_rows(df_res_1, 
+                        df_res_2, 
+                        df_res_3_1, 
+                        df_res_3_2,
+                        df_res_4_1,
+                        df_res_4_2)
+
+# holm  
+# df_results <- 
+#   df_results %>% 
+#   filter(!str_detect(hypothesis, "4")) %>% 
+#   group_by(var) %>% 
+#   arrange(desc(p_value), .by_group=T) %>% 
+#   mutate(
+#     pos = 1:4,
+#     p_val_holm = ifelse(p_value*pos > 1, 1, p_value*pos)) %>% 
+#   ungroup() %>% 
+#   mutate(
+#     var = var %>% factor(levels = c("percent30", "kapr", "duration", 
+#                                     "comfortable_info", "mean_confidence", 
+#                                     "mean_confidence_right", "mean_confidence_wrong"))) %>% 
+#   arrange(hypothesis, var)
+
+df_results %>% 
+  print(n = 100) %>% 
+  write_csv(glue("df_results_{threshold_2}.csv"))
+
+```
+
+Sorted by p.value
+```{r echo=FALSE}
+
+# df_results <- bind_rows(df_res_1, df_res_2, df_res_3_1, df_res_3_2)
+ 
+df_results %>% 
+  arrange(p_value) %>% 
+  print(n = 100)
+
+```
