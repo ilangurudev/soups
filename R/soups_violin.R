@@ -40,7 +40,8 @@ session_important %>%
                fatten = 1,
                outlier.size = 2,
                fill = "darkslategray3",
-               alpha = 0.9) +
+               alpha = 0.9,
+              trim = FALSE) +
   geom_boxplot(width = 0.12,
                # fill = "darkslategray3",
                alpha = 0.8) +
@@ -57,12 +58,16 @@ ggsave("./plots/pb_error_soups_violin.png", dpi = 500, width = 10, height = 8*.8
 
 
 session_important %>%
+  mutate(kapr = ifelse(mode_paper == "Fully open", 100, kapr)) %>% 
   ggplot(aes(x = mode_paper, y = kapr/100)) + 
   geom_violin(lwd = 0.85, 
                fatten = 1, 
                outlier.size = 2, 
                fill = "darkslategray3", 
-               alpha = 0.9) +
+               alpha = 0.9,
+               trim = T
+              ) +
+  geom_segment(aes(x = 0.5, xend = 1.5, y = 1, yend = 1), size = 1.15) +
   geom_boxplot(width = 0.12,
                # fill = "darkslategray3",
                alpha = 0.8) +
@@ -74,7 +79,7 @@ session_important %>%
   #              geom = "crossbar", width = 0.75, lwd = 0.75) +
   scale_y_continuous(labels = scales::percent, limits = c(0,1), breaks = seq(0,1,0.2))
 
-ggsave("./plots/pb_kapr_soups_violin.png", dpi = 500, width = 10, height = 8*.8)
+ggsave("./plots/pb_kapr_soups_violin_110.png", dpi = 500, width = 10, height = 8*.8)
 
 
 session_important %>%
@@ -83,7 +88,8 @@ session_important %>%
                fatten = 1, 
                outlier.size = 2, 
                fill = "darkslategray3", 
-               alpha = 0.9) +
+               alpha = 0.9,
+              trim = F) +
   geom_boxplot(width = 0.12,
                # fill = "darkslategray3",
                alpha = 0.8) +
